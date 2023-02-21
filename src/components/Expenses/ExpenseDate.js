@@ -1,7 +1,7 @@
 import './ExpanseDate.css';
 function ExpenseDate(props){
-    const month = props.date.toLocaleString('en-US',{month:'long'});
-    const year = props.date.toLocaleString('en-US',{year:'2-digit'});
+    const month = props.date.toLocaleString('he-IL',{month:'long'});
+    const year = props.date.toLocaleString('he-IL',{year:'2-digit'});
     const day = props.date.getFullYear();
     return(
     <div className= "expense-date">
