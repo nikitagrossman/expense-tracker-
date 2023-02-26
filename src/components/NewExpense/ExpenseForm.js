@@ -21,13 +21,24 @@ function ExpenseForm(props){
 
         const expenseData = {
             title:enteredTitle,
-            amount:enteredAmount,
+            amount: +enteredAmount,
             date: new Date(enteredDate)
         }
         props.onSaveExpenseData(expenseData)
         setEnteredTitle('')
         setEnteredAmount('')
         setEnteredDate('')
+        setIsEditing(false)
+    }
+    const[isEditing, setIsEditing] = useState(false)
+    const addHandler = ()=>{
+        setIsEditing(true)
+    }
+    if(!isEditing){
+        return(<button onClick={addHandler}>add expense</button>)
+    }
+    const cancelHandler = ()=>{
+        setIsEditing(false)
     }
     return(
          <form onSubmit={submitHandler}>
@@ -62,6 +73,7 @@ function ExpenseForm(props){
                 </div>
             </div>
             <div className='new-expense__actions'>
+                <button type="button" onClick={cancelHandler} >cancel</button>
                 <button type='submit'>Add Expense</button>
             </div>
         </form>
